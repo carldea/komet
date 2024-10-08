@@ -246,7 +246,7 @@ public class NextGenSearchController extends AbstractBasicController {
                     .make(SortResultSemanticEntryController.class.getResource(SORT_SEMANTIC_RESULT_CONCEPT_FXML));
             Node node = searchSemanticEntryJFXNode.node();
             SortResultSemanticEntryController controller = searchSemanticEntryJFXNode.controller();
-            controller.setIdenticon(Identicon.generateIdenticonImage(entityVersion.publicId()));
+            controller.setIdenticon(Identicon.generateIdenticonImage2(entityVersion.publicId(), true));
             controller.setSemanticText(topText);
             controller.setWindowView(windowView);
             Entity entity = Entity.get(entityVersion.nid()).get();
@@ -324,7 +324,7 @@ public class NextGenSearchController extends AbstractBasicController {
         Node node = searchSemanticEntryJFXNode.node();
         SortResultSemanticEntryController controller = searchSemanticEntryJFXNode.controller();
         SemanticEntityVersion semantic = latestVersionSearchResult.latestVersion().get();
-        controller.setIdenticon(Identicon.generateIdenticonImage(semantic.publicId()));
+        controller.setIdenticon(Identicon.generateIdenticonImage2(semantic.publicId(), true));
         controller.setSemanticText(formatHighlightedString(latestVersionSearchResult.highlightedString()));
         Entity entity = Entity.getConceptForSemantic(semantic.nid()).get();
         controller.setData((ConceptEntity) entity);
@@ -351,7 +351,7 @@ public class NextGenSearchController extends AbstractBasicController {
             entry.set(searchConceptEntryJFXNode.node());
             SortResultConceptEntryController controller = searchConceptEntryJFXNode.controller();
 
-            controller.setIdenticon(Identicon.generateIdenticonImage(entityVersion.publicId()));
+            controller.setIdenticon(Identicon.generateIdenticonImage2(entityVersion.publicId(), true));
             controller.setWindowView(windowView);
             Entity entity = Entity.get(entityVersion.nid()).get();
             controller.setData((ConceptEntity) entity);

@@ -755,7 +755,7 @@ public class DetailsController  {
         identifierTooltip.setText(idStr);
 
         // Identicon
-        Image identicon = Identicon.generateIdenticonImage(entityFacade.publicId());
+        Image identicon = Identicon.generateIdenticonImage2(entityFacade.publicId(), true);
         identiconImageView.setImage(identicon);
 
         // Obtain STAMP info

@@ -427,7 +427,7 @@ public class ResultsController extends AbstractBasicController implements BasicC
         HBox selectedHbox = new HBox();
 
         // create identicon for the concept and add it to the left hbox
-        Image identicon = Identicon.generateIdenticonImage(entity.publicId());
+        Image identicon = Identicon.generateIdenticonImage2(entity.publicId(), true);
         ImageView imageView = new ImageView();
         imageView.setFitWidth(20);
         imageView.setFitHeight(20);

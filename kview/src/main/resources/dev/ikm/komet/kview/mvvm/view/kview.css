@@ -2195,7 +2195,6 @@ Timeline Year line segment (will overlay change circles)
     -fx-font-weight: 500;
 }
 
-
 .lidr-results-type-hbox-radio > .radio-button > .radio {
     -fx-background-color: -Secondary-05;
     -fx-pref-height: 16px;

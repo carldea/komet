@@ -13,8 +13,13 @@
             <artifactId>nsmenufx</artifactId>
         </dependency>
         <dependency>
+        <groupId>org.carlfx</groupId>
+        <artifactId>cognitive</artifactId>
+    </dependency>
+        <dependency>
             <groupId>org.carlfx</groupId>
-            <artifactId>cognitive</artifactId>
+            <artifactId>axonic</artifactId>
+            <version>0.0.1</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>

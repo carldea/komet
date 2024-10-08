@@ -15,6 +15,8 @@
  */
 package dev.ikm.komet.framework;
 
+import dev.ikm.identicon.toucan.LifeHash;
+import dev.ikm.identicon.toucan.LifeHashVersion;
 import dev.ikm.tinkar.common.id.PublicId;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -25,7 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-
+//import dev.ikm.identicon.toucan;
 public class Identicon {
     /*
 
@@ -67,7 +69,26 @@ public class Identicon {
 
         return finalImageView;
     }
-
+    public static Image generateIdenticonImage2(PublicId publicId, boolean hasAlpha) {
+        LifeHash.Image lifeHashImage = LifeHash.makeFromUTF8(publicId.idString(), LifeHashVersion.FIDUCIAL, 1, hasAlpha);
+        WritableImage writableImage = new WritableImage(lifeHashImage.width(), lifeHashImage.height());
+        PixelWriter pixelWriter = writableImage.getPixelWriter();
+        for (int y = 0; y < lifeHashImage.height(); y++) {
+            for (int x = 0; x < lifeHashImage.width(); x++) {
+                int offset = (y * lifeHashImage.width() + x) * (lifeHashImage.hasAlpha() ? 4 : 3);
+                int r = lifeHashImage.colors().get(offset) & 0xFF;
+                int g = lifeHashImage.colors().get(offset + 1) & 0xFF;
+                int b = lifeHashImage.colors().get(offset + 2) & 0xFF;
+                if(lifeHashImage.hasAlpha()) {
+                    double a = (lifeHashImage.colors().get(offset + 3) & 0xFF) / 255.0;
+                    pixelWriter.setColor(x, y, Color.rgb(r, g, b, a));
+                } else {
+                    pixelWriter.setColor(x, y, Color.rgb(r, g, b));
+                }
+            }
+        }
+        return writableImage;
+    }
     public static Image generateIdenticonImage(PublicId publicId) {
         int width = 5;
         int height = 5;
